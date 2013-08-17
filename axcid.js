@@ -12,6 +12,7 @@ axcid.log = axcid.debug_log;
 
 var WORDS_FEATURE = ['&', 'ft.', 'feat.', 'feat ', 'feat', ' x ', 'by'];
 var WORDS_REMIX = ['remix', 'bootleg', 'prod.', 'prod', 'edit'];
+var WORDS_REMOVE = ["explicit", "(explicit)"];
 
 function string_in_between(src, left, right)
 {
@@ -133,6 +134,7 @@ function song_lex(text)
     remix_artists = [];
 
     text = text.replace(":", "-");
+    text = remove_list(text, WORDS_REMOVE);
 
     var other_blocks = strings_in_between(text, "[", "]");
     other_blocks = other_blocks.concat(strings_in_between(text, "(", ")"));

@@ -25,6 +25,7 @@ $(function(){
         axcid.debug_log("orig title: "+original_title);
 
         var is_music = false;
+
         var category = $("#eow-category").text();
         if (category.toLowerCase().indexOf("music") != -1)
         {
@@ -60,16 +61,18 @@ $(function(){
         }
     }
 
-    var old_title = $('.watch-title').text();
+    var old_title = "";
     function interval_detect()
     {
         var location = window.location+"";
-        if (!location.indexOf("watch")) return;
+        if (location.indexOf("watch") == -1) return;
+
         if ($('.watch-title').text() == old_title) return;
+        try_detect_music();
         old_title = $('.watch-title').text();
         var video = (location.split('?v=')[1]);
         axcid.debug_log('dbg: '+video);
-        try_detect_music();
+
     }
     setInterval(interval_detect, 1000);
     interval_detect();
