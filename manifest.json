@@ -1,0 +1,29 @@
+{
+	"manifest_version": 2,
+	"name": "Axcid Extension",
+	"version": "0.1",
+	
+	"description": "Build your Axcid library and keep playing your music across tabs",
+	
+	"background": {
+		"persistent": true,
+		"page": "background.html"
+	},
+	
+	"content_scripts": [
+		{
+			"matches": ["http://*.youtube.com/*", "http://youtube.com/*"],
+			"css": ["css/extra-yt.css"],
+			"js": ["zepto.js", "axcid.js", "ui/youtube.js"]
+		}
+	],
+	
+	"permissions": [
+		"tabs",
+		"*://*.youtube.com/",
+		"*://*.soundcloud.com/",
+		"*://*.ytimg.com/",
+		"*://*.axcid.org/",
+		"*://localhost/"
+	]
+}
